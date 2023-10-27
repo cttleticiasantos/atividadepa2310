@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imposto</title>
+</head>
+
+<body>
+    <h1>Imposto</h1>
+    <div id="resultado"></div>
+    <script>
+        let pergunta = Number(prompt("Deseja cadastrar o imposto?\n[1] - Sim\n[2] - Não"));
+
+        while (pergunta === 1) {
+            let nome = prompt("Digite o nome do contribuinte");
+            let cpf = prompt("Digite o CPF do contribuinte");
+            let renda = Number(prompt("Digite a renda anual do contribuinte"));
+            let dependente = Number(prompt("Digite o número de dependentes do contribuinte"));
+            let desconto = dependente * 110;
+            let imposto;
+
+            if (renda < 901) {
+                imposto = 0;
+            } else if (renda <= 5000) {
+                imposto = renda * 0.05 - desconto;
+            } else if (renda <= 10000) {
+                imposto = renda * 0.1 - desconto;
+            } else {
+                imposto = renda * 0.15 - desconto;
+            }
+
+            pergunta = Number(prompt("Deseja cadastrar mais um contbuinte\n[1] - Sim\n[2] - Não"));
+
+            document.getElementById("resultado").innerHTML += "<br>Nome: " + nome + "<br>CPF: " + cpf + "<br>Renda: " + renda +
+                "<br>Dependentes: " + dependente + "<br>Desconto: " + desconto + "<br>Imposto: " + imposto;
+        }
+    </script>
+</body>
+</html>

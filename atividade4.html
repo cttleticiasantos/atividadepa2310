@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avaliações</title>
+</head>
+
+<body>
+    <h3>Avaliação</h3>
+    <div id="detalheAlunos"></div>
+    <div id="resultado"></div>
+    <script>
+        let pergunta = Number(prompt("Quer cadastrar as avaliações?\n[1] - Sim\n[2] - Não"));
+        let somamedia = 0;
+        let maiormedia = 0; 
+        let menormedia = 0; 
+        let totalalunos = 0; 
+        let aprovados = 0;
+        let reprovadosPorNota = 0;
+        let reprovadosPorFalta = 0;
+        let i = 1;
+
+        while (pergunta === 1) {
+            let matricula = prompt("Digite a matricula do aluno");
+            let nota1 = Number(prompt("Digite a primeira nota"));
+            let nota2 = Number(prompt("Digite a segunda nota"));
+            let nota3 = Number(prompt("Digite a terceira nota"));
+            let frequencia = Number(prompt("Digite a frequencia do aluno"));
+            let media = (nota1 + nota2 + nota3) / 3;
+            totalalunos += 1;
+            somamedia += media;
+
+            if (i == 1){
+                maiormedia = media;
+                menormedia = media;
+            }
+
+            if (media > maiormedia) {
+                maiormedia = media;
+            }
+            if (media < menormedia) {
+                menormedia = media;
+            }
+
+            if (media >= 7 && (frequencia / 100) >= 0.8) {
+                aprovados++;
+                document.getElementById("detalheAlunos").innerHTML +=
+                    `Matrícula: ${matricula}</br>Média Final: ${media.toFixed(2)}</br>Resultado: Aprovado</br><hr>`;
+            } else if (media < 7) {
+                reprovadosPorNota++;
+                document.getElementById("detalheAlunos").innerHTML +=
+                    `Matrícula: ${matricula}</br>Média Final: ${media.toFixed(2)}</br>Resultado: Reprovado por Nota</br><hr>`;
+            } else {
+                reprovadosPorFalta++;
+                document.getElementById("detalheAlunos").innerHTML +=
+                    `Matrícula: ${matricula}</br>Média Final: ${media.toFixed(2)}</br>Resultado: Reprovado por Falta</br><hr>`;
+            }
+            i += 1;
+            pergunta = Number(prompt("Quer cadastrar mais avaliações?\n[1] - Sim\n[2] - Não"));
+        }
+
+        let mediaTurma = somamedia / totalalunos;
+
+        document.getElementById("resultado").innerHTML = `
+        </br>
+        Média da Turma: ${mediaTurma.toFixed(2)} </br>
+        Maior Média: ${maiormedia.toFixed(2)} </br>
+        Menor Média: ${menormedia.toFixed(2)} </br>
+        Total de Alunos Aprovados: ${aprovados} </br>
+        Total de Alunos Reprovados por Nota: ${reprovadosPorNota}</br>
+        Total de Alunos Reprovados por Falta: ${reprovadosPorFalta} </br><hr>
+        `;
+    </script>
+</body>
+
+</html>

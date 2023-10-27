@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recrutamento</title>
+</head>
+
+<body>
+    <h1>Recrutamento</h1>
+    <div id="resultado"></div>
+    <script>
+        let a = 0; 
+        let r = 0; 
+        let i = 0; 
+
+        let pergunta = Number(prompt("Quer cadastrar um candidato?\n[1] - Sim\n[2] - Não"));
+
+        while (pergunta === 1) {
+            let candidato = prompt("Digite o número do candidato:");
+            let idade = prompt("Digite a idade do candidato:");
+            let sexo = prompt("Digite o sexo do candidato\n[F] - Feminino\n[M] - Masculino");
+            let experiencia = Number(prompt("Possui experiência profissional?\n[1] - Sim\n[2] - Não"));
+
+            switch (experiencia) {
+                case 1:
+                    document.getElementById("resultado").innerHTML += "Número do candidato: " + candidato + "<br>Idade: " + idade + "<br>Sexo: " + sexo + "<br>Possui experiência profissional: Sim<hr>";
+                    a++;
+                    break;
+                case 2:
+                    document.getElementById("resultado").innerHTML += "Número do candidato: " + candidato + "<br>Idade: " + idade + "<br>Sexo: " + sexo + "<br>Possui experiência profissional: Não<hr>";
+                    r++;
+                    break;
+                default:
+                    alert("Digite um número válido");
+                    break;
+            }
+            i++;
+
+            pergunta = Number(prompt("Quer cadastrar mais um candidato?\n[1] - Sim\n[2] - Não"));
+        }
+
+        document.getElementById("resultado").innerHTML += "Total com experiência: " + a + "<br>Total sem experiência: " + r + "<br>Total de Candidatos: " + i + '<hr>';
+    </script>
+</body>
+
+</html>

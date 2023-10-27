@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boletim escolar</title>
+</head>
+<body>
+    <h3>Boletim Escola São José de Assis</h3>
+    <div id="cadastro"></div>
+    <script>
+        let pergunta = Number(prompt("Quer cadastrar o registro da disciplina?\n[1] - Sim\n[2] - Não"));
+        let resultado = ''; 
+
+        while (pergunta === 1) {
+            let nome = prompt("Digite o nome da matéria");
+            let conteudo = prompt("Digite a descrição do conteúdo");
+            let frequencia = prompt("Digite a frequência");
+            let nm = prompt("Digite a nota mínima");
+
+            resultado += "Nome da Disciplina: " + nome + "<br>Conteúdo da Disciplina: " + conteudo + "<br>Frequência: " + frequencia + "<br>Nota Mínima: " + nm + '<hr>';
+            pergunta = Number(prompt("Quer cadastrar outra disciplina?\n[1] - Sim\n[2] - Não"));
+        }
+
+        document.getElementById("cadastro").innerHTML = resultado;
+    </script>
+</body>
+</html>

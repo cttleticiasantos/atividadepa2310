@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produção</title>
+</head>
+
+<body>
+    <h1>Controle de Qualidade da Produção</h1>
+    <div id="controle"></div>
+    <script>
+        let a = 0;
+        let r = 0;
+        let i = 0;
+
+        let pergunta = Number(prompt("Quer cadastrar a qualidade das peças?\n[1] - Sim\n[2] - Não"));
+
+        while (pergunta === 1) {
+
+            let peca = prompt("Digite o número da peça:");
+            let qualidade = Number(prompt("Qual o status do produto?\n[1] - Aprovado\n[2] - Reprovado"));
+
+            switch (qualidade) {
+                case 1:
+                    document.getElementById("controle").innerHTML += "Número da Peça: " + peca + "<br>Status do Produto: Aprovado<br>"+ '<hr>';
+                    a++;
+                    break;
+                case 2:
+                    document.getElementById("controle").innerHTML += "Número da Peça: " + peca + "<br>Status do Produto: Reprovado<br>"+ '<hr>';
+                    r++;
+                    break;
+                default:
+                    alert("Digite um status válido");
+                    break;
+            }
+            i++;
+
+            pergunta = Number(prompt("Quer cadastrar mais peças?\n[1] - Sim\n[2] - Não"));
+        }
+
+        document.getElementById("controle").innerHTML += "Total Aprovado: " + a + "<br>Total Reprovado: " + r + "<br>Total de Itens: " + i + '<hr>';
+    </script>
+</body>
+
+</html>
